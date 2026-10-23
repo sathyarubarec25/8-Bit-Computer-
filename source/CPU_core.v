@@ -5,7 +5,6 @@ module cpu_core(
     input start,
     input inp_loaded,
     input [7:0] inp_data,
-
     input prog_mode,
     input prog_write,
     input [3:0] prog_addr,
