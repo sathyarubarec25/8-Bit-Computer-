@@ -1,28 +1,27 @@
 
-module cpu_core(clk, reset, start, inp_loaded, inp_data,
-                prog_mode, prog_write, prog_addr, prog_data,
-                prog_readback, inp_req, halted, pc_disp, out_value);
+module cpu_core(
+    input clk,
+    input reset,
+    input start,
+    input inp_loaded,
+    input [7:0] inp_data,
 
-input clk;
-input reset;
-input start;
-input inp_loaded;
-input [7:0] inp_data;
+    input prog_mode,
+    input prog_write,
+    input [3:0] prog_addr,
+    input [7:0] prog_data,
 
-input prog_mode;
-input prog_write;
-input [3:0] prog_addr;
-input [7:0] prog_data;
+    output [7:0] prog_readback,
+    output inp_req,
+    output halted,
+    output [3:0] pc_disp,
+    output [7:0] out_value
+);
 
-output [7:0] prog_readback;
-output inp_req;
-output halted;
-output [3:0] pc_disp;
-output [7:0] out_value;
-
-// Bus and control wires
+// Shared bus
 wire [7:0] bus;
 
+// Control signals
 wire co, ci, cl;
 wire Mi, Ri, Ro;
 wire Ii, Io;
@@ -30,7 +29,7 @@ wire Ai, Ao, Bi;
 wire Alo, Sub, Fe;
 wire oi, Inp;
 
-// Module outputs
+// Internal connections
 wire [3:0] pc_bus4;
 wire [3:0] mar_addr;
 wire [7:0] ir_bus;
@@ -43,13 +42,14 @@ wire [1:0] alu_flags;
 wire [1:0] flags;
 wire [7:0] ram_bus;
 
-// Shared bus
-assign bus = {4'b0000, pc_bus4}
-           | ir_bus
-           | a_bus
-           | (Alo ? alu_y : 8'b00000000)
-           | ram_bus
-           | (Inp ? inp_data : 8'b00000000);
+// Shared bus multiplexer
+assign bus =
+       (co  ? {4'b0000, pc_bus4} : 8'b0)
+     | (Io  ? ir_bus             : 8'b0)
+     | (Ao  ? a_bus              : 8'b0)
+     | (Alo ? alu_y              : 8'b0)
+     | (Ro  ? ram_bus            : 8'b0)
+     | (Inp ? inp_data           : 8'b0);
 
 // Control unit
 ctrl_unit u_ctrl (
@@ -104,6 +104,7 @@ MAR u_mar (
 // RAM
 RAM u_ram (
     .clk(clk),
+    .reset(reset),
     .Ri(Ri),
     .Ro(Ro),
     .addr(mar_addr),
@@ -148,7 +149,7 @@ B_reg u_b (
     .B(b_val)
 );
 
-// ALU
+// Arithmetic logic unit
 alu u_alu (
     .A(a_val),
     .B(b_val),
