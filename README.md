@@ -1,80 +1,127 @@
 **8-Bit Computer Design Using Verilog HDL**
 
-This project is about designing an 8-bit computer using Verilog HDL and implementing it on a Spartan-7 FPGA board. I worked on building the processor by connecting different modules such as the ALU, registers, RAM, program counter, and control unit.
-The processor follows the Fetch–Decode–Execute cycle to run instructions. It supports basic arithmetic and logical operations, branching, and input/output operations.
+**Project Overview**
+
+This project involves designing and implementing an 8-bit computer using Verilog HDL on a Spartan-7 FPGA board. The processor is built by integrating individual modules such as the ALU, registers, RAM, program counter, instruction register, and control unit.
+
+The processor follows the Fetch–Decode–Execute cycle to execute instructions. The project helped me understand how these modules work together to perform arithmetic operations, manage data, and control instruction execution.
 
 **Features**
 
-8-bit computer with a custom 16-instruction set
-Hardwired FSM control unit
-16 × 8 RAM for both instructions and data
-Conditional (JZ) and unconditional (JMP) branching
-Eight LEDs and a seven-segment display for output
-Two slide switches select what the LEDs show: CPU output, PC, accumulator or IR
-Simulation and FPGA implementation using Vivado
+8-bit processor with a custom 16-instruction set
+
+Hardwired FSM-based control unit
+
+16 × 8 RAM for storing instructions and data
+
+Support for arithmetic operations and conditional and unconditional branching
+
+Input and output operations
+
+Seven-segment display for output
+
+LED indicators for monitoring processor status
+
+Simulation and FPGA implementation using AMD/Xilinx Vivado
 
 **System Architecture**
 
-The processor is built from a datapath and a hardwired control unit that drives it.
+The processor consists of a datapath and a hardwired control unit that coordinates the execution of instructions.
 
-**Fetch path**
+**Fetch Path**
 
-PC: holds the address of the next instruction
+Program Counter (PC): Holds the address of the next instruction.
 
-MAR: holds the address for the current memory access
+Memory Address Register (MAR): Stores the address used to access RAM.
 
-RAM: 16 × 8 memory for both instructions and data
+RAM: Provides storage for instructions and data.
 
-IR: holds the instruction being executed
+Instruction Register (IR): Holds the current instruction for decoding and execution.
 
-**Execute path**
+**Execute Path**
 
-ACC: main operand and result register
+Accumulator (A Register): Stores an operand and the results of operations.
 
-B register: second operand for the ALU
+B Register: Holds the second operand for ALU operations.
 
-ALU: arithmetic, logic and shift operations
+Arithmetic Logic Unit (ALU): Performs arithmetic and logical operations.
 
-Flag register: zero flag (used by JZ) and carry flag
+Flag Register: Stores status flags used by conditional instructions.
 
-**Control and output**
+**Control and Output**
 
-Control unit: FSM that generates all control signals
+Control Unit: Uses a finite-state machine (FSM) to generate the control signals required for each instruction.
 
-Output register: holds the value sent by OUT
+Output Register: Stores the value produced by the OUT instruction.
 
-Clock divider: slows the board clock down so the CPU is observable
+Clock Divider: Slows down the board clock to make processor operation easier to observe on the FPGA board.
 
 **Instruction Set**
 
-Each instruction is 8 bits: a 4-bit opcode and a 4-bit address or immediate value.
-Instructions: NOP, LDA, STA, ADD, SUB, JMP, LDI, INP, OUT, HLT, AND, OR, XOR, NOT, SHIFT, JZ
+Each instruction is 8 bits wide, consisting of a 4-bit opcode and a 4-bit address or immediate value.
 
-**Working**
+The instruction set includes:
 
-The program is stored in RAM, and the processor executes it one instruction at a time. The program counter keeps track of the instruction address, while the control unit generates the signals needed for each operation. The ALU performs the calculations, and the result is shown on the LEDs and seven-segment display.
+NOP, LDA, STA, ADD, SUB, JMP, LDI, JC, JZ, ADI, SUI, XRA, ANA, INP, OUT, and HLT.
 
-**Example program**
+**Working Principle**
 
-0: LDI 5
-1: ADD 8     (RAM[8] = 3)
-2: OUT
-3: HLT
+The program is stored in RAM, and the processor executes instructions through the Fetch–Decode–Execute cycle. The program counter identifies the instruction address, the instruction register holds the fetched instruction, and the control unit generates the signals needed for execution.
 
-Result: 5 + 3 = 8, displayed as 08.
+The ALU performs calculations, while the registers and RAM manage operands and results. The output register stores the value sent by the OUT instruction, which can then be observed on the seven-segment display.
+
+**Example Program**
+
+The following program demonstrates loading a value, adding a value stored in RAM, displaying the result, and halting execution.
+
+Address
+
+Instruction
+
+Description
+
+0
+
+LDI 5
+
+Load the immediate value 5 into the accumulator
+
+1
+
+ADD 8
+
+Add the value stored at RAM address 8
+
+2
+
+OUT
+
+Send the result to the output register
+
+3
+
+HLT
+
+Stop execution
+
+If RAM[8] = 3, the expected result is:
+
+5 + 3 = 8
+
+The output is displayed as 08 when the seven-segment display is configured to show the output value in hexadecimal.
 
 **Hardware and Development Tools**
 
-**Language:** Verilog HDL
+Hardware Description Language: Verilog HDL
 
-**Board:** Real Digital Boolean Board
+Development Board: RealDigital Boolean Board
 
-**FPGA family:** AMD/Xilinx Spartan-7
+FPGA Family: AMD/Xilinx Spartan-7
 
-**FPGA part:** XC7S50-CSGA324-1
+FPGA Part: XC7S50-CSGA324-1
 
-**Software:** Xilinx Vivado
+Development Software: AMD/Xilinx Vivado
 
 **Conclusion**
 
-Building this CPU showed me how a processor actually works: fetching an instruction, decoding the opcode, and moving data between registers, RAM and the ALU. Running it on a Spartan-7 board made the theory real, because I could watch the PC, accumulator and output change on the LEDs as the program ran.
+This project provided practical experience in designing a processor and understanding how its internal components work together. Implementing the Fetch–Decode–Execute cycle helped me understand instruction processing, register transfers, memory access, and ALU operations. Testing the design through simulation and FPGA implementation also gave me experience in hardware integration and debugging.
