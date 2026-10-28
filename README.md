@@ -1,8 +1,10 @@
 8-Bit Computer Design Using Verilog HDL
+
 This project is about designing an 8-bit computer using Verilog HDL and implementing it on a Spartan-7 FPGA board. I worked on building the processor by connecting different modules such as the ALU, registers, RAM, program counter, and control unit.
 The processor follows the Fetch–Decode–Execute cycle to run instructions. It supports basic arithmetic and logical operations, branching, and input/output operations.
 
 Features;
+
 8-bit computer with a custom 16-instruction set
 Hardwired FSM control unit
 16 × 8 RAM for both instructions and data
@@ -12,6 +14,7 @@ Two slide switches select what the LEDs show: CPU output, PC, accumulator or IR
 Simulation and FPGA implementation using Vivado
 
 System Architecture
+
 The processor is built from a datapath and a hardwired control unit that drives it.
 
 Fetch path
@@ -49,6 +52,7 @@ Example program
 Result: 5 + 3 = 8, displayed as 08.
 
 Hardware and Development Tools;
+
 Language: Verilog HDL
 Board: Real Digital Boolean Board
 FPGA family: AMD/Xilinx Spartan-7
