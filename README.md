@@ -24,6 +24,8 @@ LED indicators for monitoring processor status
 
 Simulation and FPGA implementation using AMD/Xilinx Vivado
 
+
+
 **System Architecture**
 
 The processor consists of a datapath and a hardwired control unit that coordinates the execution of instructions.
@@ -64,6 +66,9 @@ The instruction set includes:
 
 NOP, LDA, STA, ADD, SUB, JMP, LDI, JC, JZ, ADI, SUI, XRA, ANA, INP, OUT, and HLT.
 
+
+
+
 **Working Principle**
 
 The program is stored in RAM, and the processor executes instructions through the Fetch–Decode–Execute cycle. The program counter identifies the instruction address, the instruction register holds the fetched instruction, and the control unit generates the signals needed for execution.
@@ -96,6 +101,9 @@ If RAM[8] = 3, the expected result is:
 
 The output is displayed as 08 when the seven-segment display is configured to show the output value in hexadecimal.
 
+
+
+
 **Hardware and Development Tools**
 
 Hardware Description Language: Verilog HDL
@@ -107,6 +115,8 @@ FPGA Family: AMD/Xilinx Spartan-7
 FPGA Part: XC7S50-CSGA324-1
 
 Development Software: AMD/Xilinx Vivado
+
+
 
 **Conclusion**
 
