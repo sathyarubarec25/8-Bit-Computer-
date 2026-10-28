@@ -6,10 +6,15 @@ The processor follows the Fetch–Decode–Execute cycle to run instructions. It
 **Features**
 
 8-bit computer with a custom 16-instruction set
+
 Hardwired FSM control unit
+
 16 × 8 RAM for both instructions and data
+
 Conditional (JZ) and unconditional (JMP) branching
+
 Eight LEDs and a seven-segment display for output
+
 Two slide switches select what the LEDs show: CPU output, PC, accumulator or IR
 Simulation and FPGA implementation using Vivado
 
@@ -20,21 +25,29 @@ The processor is built from a datapath and a hardwired control unit that drives 
 Fetch path
 
 PC: holds the address of the next instruction
+
 MAR: holds the address for the current memory access
+
 RAM: 16 × 8 memory for both instructions and data
+
 IR: holds the instruction being executed
 
 Execute path
 
 ACC: main operand and result register
+
 B register: second operand for the ALU
+
 ALU: arithmetic, logic and shift operations
+
 Flag register: zero flag (used by JZ) and carry flag
 
 Control and output
 
 Control unit: FSM that generates all control signals
+
 Output register: holds the value sent by OUT
+
 Clock divider: slows the board clock down so the CPU is observable
 
 **Instruction Set**
@@ -58,9 +71,13 @@ Result: 5 + 3 = 8, displayed as 08.
 **Hardware and Development Tools**
 
 Language: Verilog HDL
+
 Board: Real Digital Boolean Board
+
 FPGA family: AMD/Xilinx Spartan-7
+
 FPGA part: XC7S50-CSGA324-1
+
 Software: Xilinx Vivado
 
 **Conclusion**
