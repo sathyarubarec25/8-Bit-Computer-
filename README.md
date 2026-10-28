@@ -18,23 +18,27 @@ Simulation and FPGA implementation using Vivado
 The processor is built from a datapath and a hardwired control unit that drives it.
 
 Fetch path
+
 PC: holds the address of the next instruction
 MAR: holds the address for the current memory access
 RAM: 16 × 8 memory for both instructions and data
 IR: holds the instruction being executed
 
 Execute path
+
 ACC: main operand and result register
 B register: second operand for the ALU
 ALU: arithmetic, logic and shift operations
 Flag register: zero flag (used by JZ) and carry flag
 
 Control and output
+
 Control unit: FSM that generates all control signals
 Output register: holds the value sent by OUT
 Clock divider: slows the board clock down so the CPU is observable
 
 **Instruction Set**
+
 Each instruction is 8 bits: a 4-bit opcode and a 4-bit address or immediate value.
 Instructions: NOP, LDA, STA, ADD, SUB, JMP, LDI, INP, OUT, HLT, AND, OR, XOR, NOT, SHIFT, JZ
 
