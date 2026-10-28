@@ -74,33 +74,19 @@ The ALU performs calculations, while the registers and RAM manage operands and r
 
 The following program demonstrates loading a value, adding a value stored in RAM, displaying the result, and halting execution.
 
-Address
-
-Instruction
-
-Description
-
-0
-
-LDI 5
+0  LDI 5
 
 Load the immediate value 5 into the accumulator
 
-1
-
-ADD 8
+1  ADD 8
 
 Add the value stored at RAM address 8
 
-2
-
-OUT
+2   OUT
 
 Send the result to the output register
 
-3
-
-HLT
+3   HLT
 
 Stop execution
 
