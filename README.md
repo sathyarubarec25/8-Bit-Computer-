@@ -6,15 +6,10 @@ The processor follows the Fetch–Decode–Execute cycle to run instructions. It
 **Features**
 
 8-bit computer with a custom 16-instruction set
-
 Hardwired FSM control unit
-
 16 × 8 RAM for both instructions and data
-
 Conditional (JZ) and unconditional (JMP) branching
-
 Eight LEDs and a seven-segment display for output
-
 Two slide switches select what the LEDs show: CPU output, PC, accumulator or IR
 Simulation and FPGA implementation using Vivado
 
@@ -22,7 +17,7 @@ Simulation and FPGA implementation using Vivado
 
 The processor is built from a datapath and a hardwired control unit that drives it.
 
-Fetch path
+**Fetch path**
 
 PC: holds the address of the next instruction
 
@@ -32,7 +27,7 @@ RAM: 16 × 8 memory for both instructions and data
 
 IR: holds the instruction being executed
 
-Execute path
+**Execute path**
 
 ACC: main operand and result register
 
@@ -42,7 +37,7 @@ ALU: arithmetic, logic and shift operations
 
 Flag register: zero flag (used by JZ) and carry flag
 
-Control and output
+**Control and output**
 
 Control unit: FSM that generates all control signals
 
@@ -59,7 +54,7 @@ Instructions: NOP, LDA, STA, ADD, SUB, JMP, LDI, INP, OUT, HLT, AND, OR, XOR, NO
 
 The program is stored in RAM, and the processor executes it one instruction at a time. The program counter keeps track of the instruction address, while the control unit generates the signals needed for each operation. The ALU performs the calculations, and the result is shown on the LEDs and seven-segment display.
 
-Example program
+**Example program**
 
 0: LDI 5
 1: ADD 8     (RAM[8] = 3)
@@ -70,15 +65,15 @@ Result: 5 + 3 = 8, displayed as 08.
 
 **Hardware and Development Tools**
 
-Language: Verilog HDL
+**Language:** Verilog HDL
 
-Board: Real Digital Boolean Board
+**Board:** Real Digital Boolean Board
 
-FPGA family: AMD/Xilinx Spartan-7
+**FPGA family:** AMD/Xilinx Spartan-7
 
-FPGA part: XC7S50-CSGA324-1
+**FPGA part:** XC7S50-CSGA324-1
 
-Software: Xilinx Vivado
+**Software:** Xilinx Vivado
 
 **Conclusion**
 
