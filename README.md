@@ -1,9 +1,8 @@
-8-Bit Computer Design Using Verilog HDL
-
+**8-Bit Computer Design Using Verilog HDL**
 This project is about designing an 8-bit computer using Verilog HDL and implementing it on a Spartan-7 FPGA board. I worked on building the processor by connecting different modules such as the ALU, registers, RAM, program counter, and control unit.
 The processor follows the Fetch–Decode–Execute cycle to run instructions. It supports basic arithmetic and logical operations, branching, and input/output operations.
 
-Features;
+**Features;**
 
 8-bit computer with a custom 16-instruction set
 Hardwired FSM control unit
@@ -13,7 +12,7 @@ Eight LEDs and a seven-segment display for output
 Two slide switches select what the LEDs show: CPU output, PC, accumulator or IR
 Simulation and FPGA implementation using Vivado
 
-System Architecture
+**System Architecture**
 
 The processor is built from a datapath and a hardwired control unit that drives it.
 
@@ -34,11 +33,11 @@ Control unit: FSM that generates all control signals
 Output register: holds the value sent by OUT
 Clock divider: slows the board clock down so the CPU is observable
 
-Instruction Set
+**Instruction Set**
 Each instruction is 8 bits: a 4-bit opcode and a 4-bit address or immediate value.
 Instructions: NOP, LDA, STA, ADD, SUB, JMP, LDI, INP, OUT, HLT, AND, OR, XOR, NOT, SHIFT, JZ
 
-Working
+**Working**
 
 The program is stored in RAM, and the processor executes it one instruction at a time. The program counter keeps track of the instruction address, while the control unit generates the signals needed for each operation. The ALU performs the calculations, and the result is shown on the LEDs and seven-segment display.
 
@@ -51,7 +50,7 @@ Example program
 
 Result: 5 + 3 = 8, displayed as 08.
 
-Hardware and Development Tools;
+**Hardware and Development Tools;**
 
 Language: Verilog HDL
 Board: Real Digital Boolean Board
@@ -59,6 +58,6 @@ FPGA family: AMD/Xilinx Spartan-7
 FPGA part: XC7S50-CSGA324-1
 Software: Xilinx Vivado
 
-Conclusion
+**Conclusion**
 
 Building this CPU showed me how a processor actually works: fetching an instruction, decoding the opcode, and moving data between registers, RAM and the ALU. Running it on a Spartan-7 board made the theory real, because I could watch the PC, accumulator and output change on the LEDs as the program ran.
