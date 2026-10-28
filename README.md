@@ -7,22 +7,21 @@ This project involves designing and implementing an 8-bit computer using Verilog
 The processor follows the Fetch–Decode–Execute cycle to execute instructions. The project helped me understand how these modules work together to perform arithmetic operations, manage data, and control instruction execution.
 
 **Features**
+-  8-bit processor with a custom 16-instruction set
 
-8-bit processor with a custom 16-instruction set
+- Hardwired FSM-based control unit
 
-Hardwired FSM-based control unit
+- 16 × 8 RAM for storing instructions and data
 
-16 × 8 RAM for storing instructions and data
+- Support for arithmetic operations and conditional and unconditional branching
 
-Support for arithmetic operations and conditional and unconditional branching
+- Input and output operations
 
-Input and output operations
+- Seven-segment display for output
 
-Seven-segment display for output
+- LED indicators for monitoring processor status
 
-LED indicators for monitoring processor status
-
-Simulation and FPGA implementation using AMD/Xilinx Vivado
+- Simulation and FPGA implementation using AMD/Xilinx Vivado
 
 
 
@@ -77,25 +76,25 @@ The ALU performs calculations, while the registers and RAM manage operands and r
 
 **Example Program**
 
-The following program demonstrates loading a value, adding a value stored in RAM, displaying the result, and halting execution.
+- The following program demonstrates loading a value, adding a value stored in RAM, displaying the result, and halting execution.
 
 0  LDI 5
 
-Load the immediate value 5 into the accumulator
+- Load the immediate value 5 into the accumulator
 
 1  ADD 8
 
-Add the value stored at RAM address 8
+- Add the value stored at RAM address 8
 
 2   OUT
 
-Send the result to the output register
+- Send the result to the output register
 
 3   HLT
 
-Stop execution
+- Stop execution
 
-If RAM[8] = 3, the expected result is:
+ If RAM[8] = 3, the expected result is:
 
 5 + 3 = 8
 
